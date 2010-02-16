@@ -72,21 +72,31 @@ Class::Accessor::Lazy - generate lazy accessors
 
 =head1 SYNOPSIS
 
+  package Foo;
   use base qw/Class::Accessor::Lazy/;
   
   __PACKAGE__->mk_accessors(qw(foo bar));
   
   sub _build_foo {
-  
+      return fib(100000);
   }
+  
+  package main;
+  my $foo = Foo->new();
+  $foo->foo # get fib(100000)
 
 =head1 DESCRIPTION
 
-Class::Accessor::Lazy is
+Class::Accessor::Lazy is accessor generator based on Class::Accessor.
+Using this module, you can create lazy attributes. `lazy' means the
+value of attribute is calculated on demand instead of in the
+constructor.
 
 =head1 AUTHOR
 
 Tom Tsuruhara E<lt>tom.lpsd@gmail.comE<gt>
+
+with plenty of code borrowed from Class::Accessor::Fast
 
 =head1 SEE ALSO
 
