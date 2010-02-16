@@ -2,7 +2,7 @@ use inc::Module::Install;
 name 'Class-Accessor-Lazy';
 all_from 'lib/Class/Accessor/Lazy.pm';
 
-# requires '';
+requires 'Class::Accessor';
 
 tests 't/*.t';
 author_tests 'xt';
